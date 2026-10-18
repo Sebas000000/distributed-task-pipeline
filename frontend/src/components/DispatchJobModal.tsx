@@ -164,19 +164,19 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-xs p-4 select-none">
-      <div className="bg-[#111113] border border-zinc-800 rounded-lg shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xs p-4 select-none">
+      <div className="bg-[#15181e] border border-zinc-800 rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Modal Header */}
-        <div className="px-5 py-3.5 border-b border-zinc-800 flex items-center justify-between bg-[#151518]">
-          <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-indigo-500"></span>
+        <div className="px-5 py-4 border-b border-zinc-800/80 flex items-center justify-between bg-[#111318]">
+          <div className="flex items-center space-x-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
             <h3 className="text-sm font-semibold text-zinc-100 font-sans tracking-tight">
               Dispatch Task to Redis Broker
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="text-zinc-500 hover:text-zinc-200 p-1 rounded hover:bg-zinc-800 transition-colors"
+            className="text-zinc-500 hover:text-zinc-200 p-1 rounded-lg hover:bg-zinc-800 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -186,7 +186,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
         <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-5 space-y-4 font-mono text-xs">
           {/* Quick Preset Buttons */}
           <div>
-            <label className="text-[11px] text-zinc-400 font-sans block mb-1.5 uppercase font-medium tracking-wider">
+            <label className="text-[11px] text-zinc-400 font-sans block mb-1.5 uppercase font-semibold tracking-wider">
               Quick Templates
             </label>
             <div className="flex flex-wrap gap-1.5">
@@ -195,7 +195,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
                   type="button"
                   key={idx}
                   onClick={() => handleSelectPreset(preset)}
-                  className="px-2 py-1 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 rounded text-[11px] transition-colors"
+                  className="px-2.5 py-1 bg-[#0c0d12] hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 rounded-lg text-[11px] transition-colors"
                 >
                   {preset.label}
                 </button>
@@ -206,13 +206,13 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
           {/* Queue & Payload Type Selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-medium tracking-wider">
+              <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-semibold tracking-wider">
                 Target Queue
               </label>
               <select
                 value={queueName}
                 onChange={(e) => handleQueueChange(e.target.value as QueueName)}
-                className="w-full bg-[#09090b] border border-zinc-800 text-zinc-200 rounded px-3 py-2 outline-hidden focus:border-indigo-500"
+                className="w-full bg-[#0c0d12] border border-zinc-800 text-zinc-200 rounded-lg px-3 py-2 outline-hidden focus:border-emerald-500/70"
               >
                 <option value="report-gen">report-gen</option>
                 <option value="data-ingest">data-ingest</option>
@@ -221,7 +221,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
             </div>
 
             <div>
-              <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-medium tracking-wider">
+              <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-semibold tracking-wider">
                 Event Subtype (Handler)
               </label>
               <input
@@ -229,7 +229,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
                 value={payloadType}
                 onChange={(e) => setPayloadType(e.target.value)}
                 placeholder="e.g. report.monthly, events.batch"
-                className="w-full bg-[#09090b] border border-zinc-800 text-zinc-200 rounded px-3 py-2 outline-hidden focus:border-indigo-500"
+                className="w-full bg-[#0c0d12] border border-zinc-800 text-zinc-200 rounded-lg px-3 py-2 outline-hidden focus:border-emerald-500/70"
                 required
               />
             </div>
@@ -237,13 +237,13 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
 
           {/* Priority Selection */}
           <div>
-            <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-medium tracking-wider">
+            <label className="text-[11px] text-zinc-400 font-sans block mb-1 uppercase font-semibold tracking-wider">
               Priority
             </label>
             <select
               value={priority}
               onChange={(e) => setPriority(Number(e.target.value))}
-              className="w-full bg-[#09090b] border border-zinc-800 text-zinc-200 rounded px-3 py-2 outline-hidden focus:border-indigo-500"
+              className="w-full bg-[#0c0d12] border border-zinc-800 text-zinc-200 rounded-lg px-3 py-2 outline-hidden focus:border-emerald-500/70"
             >
               <option value={1}>High Priority (1)</option>
               <option value={10}>Normal Priority (10)</option>
@@ -254,7 +254,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
           {/* JSON Payload Editor */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="text-[11px] text-zinc-400 font-sans uppercase font-medium tracking-wider">
+              <label className="text-[11px] text-zinc-400 font-sans uppercase font-semibold tracking-wider">
                 JSON Input Payload
               </label>
               <span className="text-[10px] text-zinc-500">Valid JSON required</span>
@@ -266,7 +266,7 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
                 setPayloadText(e.target.value);
                 setJsonError(null);
               }}
-              className="w-full bg-[#050506] border border-zinc-800 rounded p-3 text-zinc-200 font-mono text-xs leading-relaxed outline-hidden focus:border-indigo-500 resize-none"
+              className="w-full bg-[#0c0d12] border border-zinc-800 rounded-lg p-3 text-zinc-200 font-mono text-xs leading-relaxed outline-hidden focus:border-emerald-500/70 resize-none"
             ></textarea>
 
             {jsonError && (
@@ -278,26 +278,26 @@ export const DispatchJobModal: React.FC<DispatchJobModalProps> = ({
           </div>
 
           {serverError && (
-            <div className="bg-rose-950/30 border border-rose-800/60 p-2.5 rounded text-rose-300 text-xs flex items-center space-x-2">
+            <div className="bg-rose-950/30 border border-rose-800/60 p-2.5 rounded-lg text-rose-300 text-xs flex items-center space-x-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{serverError}</span>
             </div>
           )}
 
           {/* Modal Footer */}
-          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-end space-x-2">
+          <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-end space-x-2">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-3.5 py-1.5 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 rounded text-xs transition-colors"
+              className="px-4 py-1.5 bg-[#0c0d12] hover:bg-zinc-800 text-zinc-300 border border-zinc-800 rounded-lg text-xs transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center space-x-1.5 px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-xs font-semibold transition-all active:scale-[0.98] disabled:opacity-50 shadow-sm shadow-indigo-950"
+              className="flex items-center space-x-1.5 px-4 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 rounded-lg text-xs font-semibold transition-all active:scale-[0.98] disabled:opacity-50 shadow-sm shadow-emerald-950"
             >
               {isSubmitting ? (
                 <>
